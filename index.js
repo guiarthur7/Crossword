@@ -37,7 +37,7 @@ function grid(puzzle) {
     const lines = puzzle.split('\n');
     let res = [];
     for (let i = 0; i < lines.length; i++) {
-        res.push(lines[i]);
+        res.push(lines[i].split('')); 
     }
-    return [res];
+    return res; 
 }
