@@ -1,3 +1,5 @@
+module.exports = { gridParsed, split };
+
 const readline = require("readline");
 const rl = readline.createInterface({
     input: process.stdin,
@@ -33,7 +35,7 @@ function split(str) {
     return result;
 }
 
-function grid(puzzle) {
+function gridParsed(puzzle) {
     const lines = puzzle.split('\n');
     let res = [];
     for (let i = 0; i < lines.length; i++) {

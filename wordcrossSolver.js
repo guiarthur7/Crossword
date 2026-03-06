@@ -1,3 +1,5 @@
+const { gridParsed } = require('./index.js');
+
 function crosswordSolver(puzzle, words) {
     const grid = gridParsed(puzzle);
     
@@ -32,7 +34,53 @@ function crosswordSolver(puzzle, words) {
             }
         }
     }
+    let s = []
+    for (let p = 0; p < slots.length; p++) {
+        s.push(slots[p].length)
+    }
+    let s2 = []
+    for (let c = 0; c < words.length; c++) {
+        s2.push(words[c].length)
+    }
+
+    if (slots.length !== words.length) {
+        return "Error";
+    }
+    s.sort((a, b) => a - b);
+    s2.sort((a, b) => a - b);
+    for (let j = 0; j < s.length; j++) {
+        if (s[j] !== s2[j]) {
+            return "Error"; 
+        }
+    }
+}
+
+function canPlace(word, slot, grid) {
+    if (word.length !== slot.length) return false;
+    for (let i = 0; i < word.length; i++) {
+        let row, col;
+        if (slot.direction === 'H') {
+            row = slot.row;
+            col = slot.col + i;
+        } else {  
+            row = slot.row + i;
+            col = slot.col;
+        }
     
-    // ← ICI : Après les boucles, tu as tous tes emplacements dans 'slots'
-    // Passer à l'ÉTAPE 3
+        let cell = grid[row][col];
+        if (cell === '.') return false;
+
+        if (cell !== '0' && isNaN(cell)) {
+            if (cell !== word[i]) return false;
+        }
+    }
+    return true
+}
+
+function removeWord(slot, grid, old) {
+
+}
+
+function solve(slotindex, usedWords) {
+
 }
