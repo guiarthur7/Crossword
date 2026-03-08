@@ -37,7 +37,7 @@ node index.js
 
 Le script demande ensuite:
 
-1. La grille (utiliser `\\n` pour separer les lignes)
+1. La grille (utiliser `\n` pour separer les lignes)
 2. Les mots (format: `mot1, mot2, mot3`)
 
 ## Format de la grille
